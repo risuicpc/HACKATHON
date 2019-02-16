@@ -1,0 +1,63 @@
+{% extends 'include/base.html' %}
+{% block pretitle %}{% endblock %}
+{% block content_title %}<h1>Add zone</a> </h1>{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ 'Zone Add page' }}</div>
+                   
+                <div class="card-body">
+                    <form method="POST" action=".">
+                        {% csrf_token %}
+
+                        <legend> Register Zone Information </legend>
+                        {% for field in form.visible_fields %}
+                        {% if field.name != 'region' %}
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right"><strong>{{ field.label_tag }}</strong> </label>
+                            <div class="col-md-4">
+                                {% if form.is_bound %}
+                                    {% if field.errors %}
+                                        <div class="form-control is-invalid">{{ field }}</div>
+                                        {% for error in field.errors %}
+                                        <div class="invalid-feedback">
+                                            {{ error }}
+                                        </div>
+                                        {% endfor %}
+                                    {% else %}
+                                    <div class="form-control is-valid">{{ field }}</div>
+                                    {% endif %}
+                                {% else %}
+                                <div class="form-control">{{ field }}</div>
+                                {% endif %}
+                
+                                {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        
+                        <div class="form-group row mb-0">
+                            <div class="col-md-10">
+                                <button type="submit" name='save' value="save and add another" class="btn btn-PRIMARY" style="float: right;">
+                                    {{ 'Save and add another' }}
+                                </button>
+                            </div>
+                            <div class="col-md-1">
+                                <button type="submit" name='save' value="save" class="btn btn-primary" style="float: right;">
+                                    {{ 'Save' }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

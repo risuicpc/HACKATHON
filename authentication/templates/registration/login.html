@@ -1,0 +1,70 @@
+
+
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../../static/assets/css/style_index.css" type="text/css">
+    <link rel="stylesheet" href="../../static/assets/css/materialize-v1.0.0/materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="../../static/assets/css/l_style.css">
+
+</head>
+
+<body>
+    <nav id="navoo">
+    <h3 class="jj1 jj2">CID</h3>
+    <h4 class="jj1 jj3">Complete Identification Digitalization</h4>
+    </nav>
+    <div class="bdy"><br> <br>
+     <div class="cnt">   
+            {% if form.errors %}
+            <p>Your username and password didn't match. Please try again.</p>
+            {% endif %}
+            
+            {% if next %}
+                {% if user.is_authenticated %}
+                <p>Your account doesn't have access to this page. To proceed,
+                please login with an account that has access.</p>
+                {% else %}
+                <p>Please login to see this page.</p>
+                {% endif %}
+            {% endif %}
+            
+            <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <table>
+            <tr>
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password.label_tag }}</td>
+                <td>{{ form.password }}</td>
+            </tr>
+            </table>
+            <div class="buton">
+                <input   type="submit" value={{ 'Login' }}>
+            </div>
+            
+            <input type="hidden" name="next" value="{{ next }}">
+            </form>
+    </div>
+    </div>
+    <div class="footer">
+        <footer>
+            <p>copy right</p>
+            <p>contact</p>
+            <p>terms</p>
+            <p>procedures</p>
+        </footer>
+
+    </div>
+    
+</body>
+
+</html>

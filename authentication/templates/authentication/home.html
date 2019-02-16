@@ -1,0 +1,58 @@
+{% extends 'include/base.html' %}
+{% block pretitle %}{% endblock %}
+{% block content_title %}
+    {% if role == 'rg_admin' %}
+        <h1>LOGIN AS REGIONAL ADMIN</h1> 
+    {% elif role == 'zn_admin' %}
+         <h1>LOGIN AS ZONE ADMIN</h1>
+    {% elif role == 'wr_admin' %}
+        <h1>LOGIN AS WEREDA ADMIN</h1>
+    {% elif role == 'kb_admin' %}
+        <h1>LOGIN AS KEBELE ADMIN</h1>
+    {% elif role == 'org_admin' %}
+        <h1>LOGIN AS ORGENIZATION ADMIN</h1>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% for obj in object %}
+        {% if role == 'rg_admin' %}
+            <a href="{% url 'authentication:zoneadd' %}">{{ obj }}</a> 
+       {% elif role == 'zn_admin' %}
+            <a href="{% url 'authentication:weredaadd' %}">{{ obj }}</a>
+       {% elif role == 'wr_admin' %}
+        <a href="{% url 'authentication:kebeleadd' %}">{{ obj }}</a>
+       {% elif role == 'kb_admin' %}
+        {{ obj }}
+       {% elif role == 'org_admin' %}
+
+       {% endif %}
+    {% endfor %}
+{% block object-tools %}
+
+<div style="float:right;"><a href="{% url 'authentication:useradd' %}"><i class="sidebar-item-icon fa fa-plus"></i>
+    <span class="nav-label">ADD USER</span>
+</a></div>
+
+<div style="float:right; margin: 0px 20px;">
+    {% if role == 'rg_admin' %}
+        <a href="{% url 'authentication:zonelist' %}">{{ 'LIST OF ZONE' }}</a>
+    {% elif role == 'zn_admin' %}
+
+    {% elif role == 'wd_admin' %}
+
+    {% elif role == 'wr_admin' %}
+
+    {% elif role == 'kb_admin' %}
+    
+    {% elif role == 'org_admin' %}
+
+    {% endif %}
+</div>
+{% endblock %}
+
+
+{% endblock content %}
+{% block sidebar %}
+
+{% endblock %}

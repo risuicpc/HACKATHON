@@ -1,0 +1,47 @@
+[
+    {
+      "model": "authentication.Role",
+      "pk": 1,
+      "fields": {
+        "role_name": "al_admin"
+      }
+    },
+    {
+      "model": "authentication.Role",
+      "pk": 2,
+      "fields": {
+        "role_name": "rg_admin"
+      }
+    },
+    {
+      "model": "authentication.Role",
+      "pk": 3,
+      "fields": {
+        "role_name": "zn_admin"
+      }
+    },
+    {
+      "model": "authentication.Role",
+      "pk": 4,
+      "fields": {
+        "role_name": "wr_admin"
+      }
+      
+    },
+    {
+      "model": "authentication.Role",
+      "pk": 5,
+      "fields": {
+        "role_name": "kb_admin"
+      }
+      
+    },
+    {
+      "model": "authentication.Role",
+      "pk": 6,
+      "fields": {
+        "role_name": "org_admin"
+      }
+      
+    }
+  ]
